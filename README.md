@@ -16,7 +16,11 @@ Run the machine
 ./start.sh
 ```
 
-guest `/etc/fstab`:
+On the virtual machine guest, add virtual drive via:
+```
+vim /etc/fstab
+```
+then add the following line
 ```
 Project /root/ground-up 9p _netdev,trans=virtio,version=9p2000.u,msize=104857600 0 0
 ```
@@ -32,3 +36,4 @@ Login: `root`
 ---
 ### Sources
 - [1] https://gist.github.com/gsf/c7bb24178700ffcaeab9c100c63264bb
+- [2] https://blachniet.com/posts/create-a-minimal-local-debian-vm-with-qemu/
