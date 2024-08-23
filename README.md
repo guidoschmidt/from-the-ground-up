@@ -1,4 +1,8 @@
-# Qemu
+# Programming From The Ground Up
+
+---
+## Setup
+### Qemu
 
 Download Debian image
 ```
@@ -34,6 +38,8 @@ Login: `root`
 
 
 ---
-### Sources
+
+## Sources
+- [0] https://archive.org/details/programming-from-the-ground-up
 - [1] https://gist.github.com/gsf/c7bb24178700ffcaeab9c100c63264bb
 - [2] https://blachniet.com/posts/create-a-minimal-local-debian-vm-with-qemu/
