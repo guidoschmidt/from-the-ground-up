@@ -1,0 +1,4 @@
+**/*.qcow2
+**/*.o
+src/bin/
+src/o/
