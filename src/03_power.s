@@ -6,7 +6,7 @@
 
 _start:
   # First call of "power"
-  pushl $2             # push second argument
+  pushl $0             # push second argument
   pushl $2             # push first argument
   call power           # call function by it's name (label)
   addl $8, %esp        # move the stack pointer
@@ -22,18 +22,18 @@ _start:
                        # out into %ebx
 
   # Third call of "power"
-  pushl $4
-  pushl $2
-  call power
-  addl $8, %esp
-  movl %eax, %esi
+  #pushl $4
+  #pushl $2
+  #call power
+  #addl $8, %esp
+  #movl %eax, %esi
 
   # Add %edx, %edi and %esi
   addl %edx, %edi
-  addl %edi, %esi
+  #addl %edi, %esi
 
   # Move result to %ebx
-  movl %esi, %ebx
+  movl %edi, %ebx
 
   movl $1, %eax        # exit (%ebx is returned using exit syscall)
   int $0x80
@@ -65,8 +65,12 @@ power:
   movl %ebx, -4(%ebp)  # store current result
 
 power_loop_start:
+  cmpl $0, %ecx        # if power is 0 → return 1
+  je power_zero
+
   cmpl $1, %ecx        # if power is 1 → done
-  je end_power
+  je power_end
+
   movl -4(%ebp), %eax  #move current result into %eax
   imull %ebx, %eax     # multiply the current result by the base number
 
@@ -75,7 +79,11 @@ power_loop_start:
   decl %ecx            # decreae the power
   jmp power_loop_start # ron for the next power
 
-end_power:
+power_zero:
+  movl $1, -4(%ebp)
+  jmp power_end
+  
+power_end:
   movl -4(%ebp), %eax  # return value goes into %eax
   movl %ebp, %esp      # restore stack pointer
   popl %ebp            # restore the base pointer
