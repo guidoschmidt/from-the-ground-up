@@ -78,8 +78,11 @@ gdb bin/00_exit
 - `info register $register`, e.g. `info register eax` to list registers and
   their values (shortcut `i r`) - you can add more than one register, e.g. `i r
   eax ebx esi`
+- `info frame` shows the stack frame info (shortcut `i f`)
 - `p $sp` print stack pointer
-- `x/10d $sp` display 10 memory blocks (as decimal) at stack pointer, see [x command](https://visualgdb.com/gdbreference/commands/x)
+- `x/10d $sp` display 10 memory blocks (as decimal) at stack pointer, see [x
+  command](https://visualgdb.com/gdbreference/commands/x)
+- `backtrace` shows the call stack (shortcut `bt`)
 
 ---
 
