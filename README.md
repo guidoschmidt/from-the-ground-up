@@ -1,5 +1,5 @@
 # Programming From The Ground Up
-### Learn 32 Bit Assembly
+> Learn 32 Bit Assembly
 
 ---
 ## Project Setup
@@ -59,6 +59,25 @@ toolchain) to create a runnable binary in `bin/` folder
 
 - General Purpose Registers: `%eax, %ebx, %ecx, %edx, %edi, %esi`
 - Special Purpose Registers: `%ebp, %esp, %eip, %eflags`
+
+---
+
+## Debugging
+Using [gdb](https://sourceware.org/gdb/) you can step through the program after
+building it by running, e.g:
+```
+gdb bin/00_exit
+```
+
+**Helpful commands**
+- `list $line_number`, e.g. `list 20` to show the source code (shortcut `l`)
+- `breakpoint $line_number`, e.g. `breakpoint 20` to set a breakpoint (shortcut `b`)
+- `run` to start the program (shortcut `r`)
+- `continue` to continue after halt on a breakpoint (shortcut `c`)
+- `step` to step through line by line after halt on a breakpoint (shortcut `s`)
+- `info register $register`, e.g. `info register eax` to list registers and
+  their values (shortcut `i r`) - you can add more than one register, e.g. `i r
+  eax ebx esi`
 
 ---
 
