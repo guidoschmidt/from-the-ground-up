@@ -1,7 +1,6 @@
 # Programming From The Ground Up
 > Learn 32 Bit Assembly
 
----
 ## Project Setup
 ### Qemu
 
