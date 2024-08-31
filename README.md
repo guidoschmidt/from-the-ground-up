@@ -1,7 +1,8 @@
 # Programming From The Ground Up
+### Learn 32 Bit Assembly
 
 ---
-## Setup
+## Project Setup
 ### Qemu
 
 Download Debian image
@@ -36,6 +37,28 @@ Crtl-A x
 
 Login: `root`
 
+
+### Makefile
+
+The `Makefile` allows building the examples, e.g:
+```
+make build src=00_exit.s
+```
+
+`make build` unites the following build process:
+
+1. Assemble/complie with `as` (using `-32` option to build 32 bit assembler,
+since *Programming from the ground up* covers 32 bit assembly) to `object`
+(`.o`) file in `o/` directory.
+2. Link with `ld` (using `-m elf_i386` option to use the 32 bit emulation
+toolchain) to create a runnable binary in `bin/` folder
+
+---
+
+## Registers
+
+- General Purpose Registers: `%eax, %ebx, %ecx, %edx, %edi, %esi`
+- Special Purpose Registers: `%ebp, %esp, %eip, %eflags`
 
 ---
 
