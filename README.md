@@ -6,8 +6,7 @@
 
 Download Debian image
 ```
-curl -Lo debian.qcow2 \
-    https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
+curl -Lo debian.amd64.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
 ```
 
 Resize to desired disk size
@@ -27,6 +26,12 @@ vim /etc/fstab
 then add the following line
 ```
 Project /root/ground-up 9p _netdev,trans=virtio,version=9p2000.u,msize=104857600 0 0
+```
+
+Install development toolchains
+```
+apt update
+apt install -y build-essential gdb vim
 ```
 
 Exit the virtual machine
@@ -58,6 +63,9 @@ toolchain) to create a runnable binary in `bin/` folder
 
 - General Purpose Registers: `%eax, %ebx, %ecx, %edx, %edi, %esi`
 - Special Purpose Registers: `%ebp, %esp, %eip, %eflags`
+1. `%ebp`: base pointer, you access specific data in memory by offsetting this
+   base pointer address, e.g. `-4(%ebp)`
+2. `%esp`: always contains a pointer to the top of the stack
 
 ---
 
