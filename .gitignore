@@ -1,5 +1,5 @@
 **/*.qcow2
 **/*.iso
 **/*.o
-src/bin/
-src/o/
+**/bin/
+**/o/

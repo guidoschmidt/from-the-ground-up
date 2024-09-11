@@ -69,6 +69,12 @@ toolchain) to create a runnable binary in `bin/` folder
 
 ---
 
+## Stack
+- Function parameters are pushed to the stack before function calls!
+- `%esp` is the **stack pointer** and holds the address of the stack
+
+---
+
 ## Debugging
 Using [gdb](https://sourceware.org/gdb/) you can step through the program after
 building it by running, e.g:
