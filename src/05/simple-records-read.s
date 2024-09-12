@@ -45,13 +45,14 @@ record_read_loop:
   cmpl $REC_SIZE, %eax
   jne finished_reading
 
+  
   # Otherwise print out the first name
   pushl $REC_FIRSTNAME + record_buffer
   call count_chars
   addl $4, %esp
   
   movl %eax, %edx
-  movl ST_OUTPUT_DESCRIPTOR(%ebp), %edx
+  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
   movl $SYS_WRITE, %eax
   movl $REC_FIRSTNAME + record_buffer, %ecx
   int $LINUX_SYSCALL
@@ -60,6 +61,54 @@ record_read_loop:
   call write_newline
   addl $4, %esp
 
+  
+  # ... and the last name
+  pushl $REC_LASTNAME + record_buffer
+  call count_chars
+  addl $4, %esp
+  
+  movl %eax, %edx
+  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  movl $SYS_WRITE, %eax
+  movl $REC_LASTNAME + record_buffer, %ecx
+  int $LINUX_SYSCALL
+  
+  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  call write_newline
+  addl $4, %esp
+
+
+  # ... as well as the address
+  pushl $REC_ADDRESS + record_buffer
+  call count_chars
+  addl $4, %esp
+  
+  movl %eax, %edx
+  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  movl $SYS_WRITE, %eax
+  movl $REC_ADDRESS + record_buffer, %ecx
+  int $LINUX_SYSCALL
+  
+  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  call write_newline
+  addl $4, %esp
+
+  # ... and the age
+  pushl $REC_AGE + record_buffer
+  call count_chars
+  addl $4, %esp
+  
+  movl %eax, %edx
+  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  movl $SYS_WRITE, %eax
+  movl $REC_AGE + record_buffer, %ecx
+  int $LINUX_SYSCALL
+  
+  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  call write_newline
+  addl $4, %esp
+
+  
   jmp record_read_loop
 
 finished_reading:

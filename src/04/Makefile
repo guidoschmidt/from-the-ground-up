@@ -1,6 +1,6 @@
 src = uppercase.s
 
-build: prepare compile link
+default: prepare compile link
 
 prepare:
 	mkdir -p o/

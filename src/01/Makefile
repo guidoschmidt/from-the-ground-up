@@ -1,10 +1,10 @@
 src = 01_max-number.s
 
+default: prepare compile link
+
 prepare:
 	mkdir -p o/
 	mkdir -p bin/
-
-build: prepare compile link
 
 compile:
 	as $(src) -v -32 -g -o o/$(basename $(src)).o

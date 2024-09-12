@@ -5,21 +5,39 @@
 
 record1:
   .ascii "Guido\0"
-  .rept 31 #Padding to 40 bytes
+  .rept 34 # Padding to 40 bytes
   .byte 0
   .endr
 
   .ascii "Schmidt\0"
-  .rept 31 #Padding to 40 bytes
+  .rept 32 # Padding to 40 bytes
   .byte 0
   .endr
 
   .ascii "Assembly Lane 42\n777 Memory City\0"
-  .rept 209 #Padding to 240 bytes
+  .rept 172 # Padding to 240 bytes
   .byte 0
   .endr
 
   .long 37
+
+record2:
+  .ascii "Max\0"
+  .rept 36 # Padding to 40 bytes
+  .byte 0
+  .endr
+
+  .ascii "Integer\0"
+  .rept 32 # Padding to 40 bytes
+  .byte 0
+  .endr
+
+  .ascii "Assembly Lane 42\n777 Memory City\0"
+  .rept 172 # Padding to 240 bytes
+  .byte 0
+  .endr
+
+  .long 32
 
 file_name:
   .ascii "./data/test.dat\0"
@@ -46,9 +64,15 @@ _start:
 
   # Write the record
   pushl ST_FILE_DESCRIPTOR(%ebp)
+
   pushl $record1
   call write_record
   addl $8, %esp
+
+  pushl $record2
+  call write_record
+  addl $8, %esp
+
 
   # Exit
   movl $SYS_EXIT, %eax
