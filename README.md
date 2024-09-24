@@ -30,8 +30,11 @@ Project /root/ground-up 9p _netdev,trans=virtio,version=9p2000.u,msize=104857600
 
 Install development toolchains
 ```
+dpkg --add-architecture i386
 apt update
+apt upgrade
 apt install -y build-essential gdb vim
+apt install libc6:i386
 ```
 
 Exit the virtual machine

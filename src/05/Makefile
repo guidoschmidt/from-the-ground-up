@@ -8,6 +8,10 @@ prepare:
 	mkdir -p o/
 	mkdir -p bin/
 
+clean:
+	rm -rf o/*
+	rm -rf bin/*
+
 compile-write:
 	as imports/record-write.s -v -32 -g -o o/record-write.o
 	as simple-records-write.s -v -32 -g -o o/simple-records-write.o
