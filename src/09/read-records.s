@@ -52,80 +52,80 @@ record_read_loop:
   # If this is not the same number
   # it's either end-of-file or errer → quit
   cmpl $REC_SIZE, %eax
-  jne finished_reading
+  je finished_reading
 
   
   # Otherwise print out the first name
-  movl record_buffer_ptr, %eax
-  addl $REC_FIRSTNAME, %eax
-  pushl %eax
+  # movl record_buffer_ptr, %eax
+  # addl $REC_FIRSTNAME, %eax
+  # pushl %eax
 
-  call count_chars
-  addl $4, %esp
+  # call count_chars
+  # addl $4, %esp
   
-  movl %eax, %edx
-  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
-  movl $SYS_WRITE, %eax
-  movl record_buffer_ptr, %ecx
-  addl $REC_FIRSTNAME, %ecx
-  int $LINUX_SYSCALL
+  # movl %eax, %edx
+  # movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  # movl $SYS_WRITE, %eax
+  # movl record_buffer_ptr, %ecx
+  # addl $REC_FIRSTNAME, %ecx
+  # int $LINUX_SYSCALL
 
-  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
-  call write_newline
-  addl $4, %esp
+  # pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  # call write_newline
+  # addl $4, %esp
 
   
   # ... and the last name
-  movl record_buffer_ptr, %eax
-  addl $REC_LASTNAME, %eax
-  call count_chars
-  addl $4, %esp
+  # movl record_buffer_ptr, %eax
+  # addl $REC_LASTNAME, %eax
+  # call count_chars
+  # addl $4, %esp
   
-  movl %eax, %edx
-  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
-  movl $SYS_WRITE, %eax
-  movl record_buffer_ptr, %ecx
-  addl $REC_LASTNAME, %ecx
-  int $LINUX_SYSCALL
+  # movl %eax, %edx
+  # movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  # movl $SYS_WRITE, %eax
+  # movl record_buffer_ptr, %ecx
+  # addl $REC_LASTNAME, %ecx
+  # int $LINUX_SYSCALL
   
-  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
-  call write_newline
-  addl $4, %esp
+  # pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  # call write_newline
+  # addl $4, %esp
 
 
   # ... as well as the address
-  movl record_buffer_ptr, %eax
-  addl $REC_ADDRESS, %eax
-  call count_chars
-  addl $4, %esp
+  # movl record_buffer_ptr, %eax
+  # addl $REC_ADDRESS, %eax
+  # call count_chars
+  # addl $4, %esp
   
-  movl %eax, %edx
-  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
-  movl $SYS_WRITE, %eax
-  movl record_buffer_ptr, %ecx
-  addl $REC_ADDRESS, %ecx
-  int $LINUX_SYSCALL
+  # movl %eax, %edx
+  # movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  # movl $SYS_WRITE, %eax
+  # movl record_buffer_ptr, %ecx
+  # addl $REC_ADDRESS, %ecx
+  # int $LINUX_SYSCALL
   
-  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
-  call write_newline
-  addl $4, %esp
+  # pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  # call write_newline
+  # addl $4, %esp
 
   # ... and the age
-  movl record_buffer_ptr, %eax
-  addl $REC_AGE, %eax
-  call count_chars
-  addl $4, %esp
+  # movl record_buffer_ptr, %eax
+  # addl $REC_AGE, %eax
+  # call count_chars
+  # addl $4, %esp
   
-  movl %eax, %edx
-  movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
-  movl $SYS_WRITE, %eax
-  movl record_buffer_ptr, %ecx
-  addl $REC_AGE, %ecx
-  int $LINUX_SYSCALL
+  # movl %eax, %edx
+  # movl ST_OUTPUT_DESCRIPTOR(%ebp), %ebx
+  # movl $SYS_WRITE, %eax
+  # movl record_buffer_ptr, %ecx
+  # addl $REC_AGE, %ecx
+  # int $LINUX_SYSCALL
   
-  pushl ST_OUTPUT_DESCRIPTOR(%ebp)
-  call write_newline
-  addl $4, %esp
+  # pushl ST_OUTPUT_DESCRIPTOR(%ebp)
+  # call write_newline
+  # addl $4, %esp
 
   
   jmp record_read_loop
